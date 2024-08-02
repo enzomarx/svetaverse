@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sveta's Verse</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #f8c6c1;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        main {
+            padding: 20px;
+        }
+        .search-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .search-container input {
+            padding: 10px;
+            width: 80%;
+            max-width: 600px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .categories {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .categories button {
+            background-color: #f8c6c1;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .categories button:hover {
+            background-color: #f76c6c;
+        }
+        .post-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .post-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .post-card:hover {
+            transform: scale(1.05);
+        }
+        .post-card h2 {
+            color: #f76c6c;
+            margin: 0;
+        }
+        .post-card p {
+            margin: 10px 0;
+        }
+        .post-content {
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            background-color: #f8c6c1;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sveta's Verse 🐾</h1>
+        <nav>
+            <a href="#home" onclick="showPage('home')">Home</a>
+            <a href="#contact" onclick="showPage('contact')">Contact</a>
+        </nav>
+    </header>
+
+    <main id="content">
+        <!-- Homepage Content -->
+        <div id="home" class="page">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search poems...">
+            </div>
+            <div class="categories">
+                <button onclick="filterPosts('all')">All</button>
+                <button onclick="filterPosts('Poetry')">Poetry</button>
+                <button onclick="filterPosts('Creative Writing')">Creative Writing</button>
+                <button onclick="filterPosts('Inspirational')">Inspirational</button>
+            </div>
+            <div id="postGrid" class="post-grid">
+                <!-- Posts will be dynamically inserted here -->
+            </div>
+        </div>
+
+        <!-- Post Page Content -->
+        <div id="post" class="page" style="display: none;">
+            <div id="postContent" class="post-content">
+                <!-- Post content will be dynamically inserted here -->
+            </div>
+        </div>
+
+        <!-- Contact Page Content -->
+        <div id="contact" class="page" style="display: none;">
+            <h2>Contact Us</h2>
+            <form id="contactForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br><br>
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" rows="4" required></textarea><br><br>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>Made with ❤️ and a sprinkle of magic 🐱✨</p>
+    </footer>
+
+    <script>
+        // Dummy data for posts
+        const posts = [
+            { id: 1, title: "Poem One", content: "This is the first poem content. It is very interesting and inspiring...", category: "Poetry" },
+            { id: 2, title: "Creative Piece", content: "This is a creative writing piece. It has a lot of imagination and creativity...", category: "Creative Writing" },
+            { id: 3, title: "Inspirational Poem", content: "This is an inspirational poem. It will motivate and uplift you...", category: "Inspirational" },
+            // Add more posts as needed
+        ];
+
+        function renderPosts(posts) {
+            const postGrid = document.getElementById('postGrid');
+            postGrid.innerHTML = posts.map(post => `
+                <div class="post-card">
+                    <h2>${post.title}</h2>
+                    <p>${post.content.slice(0, 100)}...</p>
+                    <a href="#post" onclick="showPost(${post.id})">Read more</a>
+                </div>
+            `).join('');
+        }
+
+        function filterPosts(category) {
+            if (category === 'all') {
+                renderPosts(posts);
+            } else {
+                const filteredPosts = posts.filter(post => post.category === category);
+                renderPosts(filteredPosts);
+            }
+        }
+
+        function searchPosts() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filteredPosts = posts.filter(post => post.title.toLowerCase().includes(query) || post.content.toLowerCase().includes(query));
+            renderPosts(filteredPosts);
+        }
+
+        function showPost(id) {
+            const post = posts.find(p => p.id === id);
+            if (post) {
+                document.getElementById('postContent').innerHTML = `
+                    <h1>${post.title}</h1>
+                    <p>${post.content}</p>
+                `;
+                showPage('post');
+            }
+        }
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => page.style.display = 'none');
+            document.getElementById(pageId).style.display = 'block';
+        }
+
+        document.getElementById('searchInput').addEventListener('input', searchPosts);
+
+        // Initial render
+        renderPosts(posts);
+        showPage('home'); // Show homepage by default
+    </script>
+</body>
+</html>
