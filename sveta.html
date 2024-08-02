@@ -19,12 +19,17 @@
         }
         header h1 {
             margin: 0;
+            font-size: 2em;
+        }
+        nav {
+            margin-top: 10px;
         }
         nav a {
-            margin: 0 15px;
+            margin: 0 10px;
             text-decoration: none;
             color: #333;
             font-weight: bold;
+            font-size: 1em;
         }
         main {
             padding: 20px;
@@ -35,10 +40,11 @@
         }
         .search-container input {
             padding: 10px;
-            width: 80%;
+            width: 90%;
             max-width: 600px;
             border: 1px solid #ddd;
             border-radius: 5px;
+            font-size: 1em;
         }
         .categories {
             text-align: center;
@@ -51,6 +57,7 @@
             margin: 0 5px;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 1em;
         }
         .categories button:hover {
             background-color: #f76c6c;
@@ -75,9 +82,11 @@
         .post-card h2 {
             color: #f76c6c;
             margin: 0;
+            font-size: 1.2em;
         }
         .post-card p {
             margin: 10px 0;
+            font-size: 0.9em;
         }
         .post-content {
             padding: 20px;
@@ -93,6 +102,29 @@
             position: fixed;
             bottom: 0;
             width: 100%;
+        }
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+            nav a {
+                display: block;
+                margin: 10px 0;
+                font-size: 1em;
+            }
+            .categories button {
+                font-size: 0.9em;
+            }
+            .post-card h2 {
+                font-size: 1em;
+            }
+            .post-card p {
+                font-size: 0.8em;
+            }
+            .search-container input {
+                width: 95%;
+            }
         }
     </style>
 </head>
