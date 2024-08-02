@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sveta's Verse</title>
+    <link rel="icon" type="image/png" href="logoSV.png"> <!-- Adiciona o favicon -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -22,6 +23,14 @@
         header h1 {
             margin: 0;
             font-size: 2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px; /* Espaço entre a logo e o título */
+        }
+        header img.logo {
+            width: 40px; /* Ajuste o tamanho da logo conforme necessário */
+            height: auto;
         }
         nav {
             margin-top: 10px;
@@ -171,7 +180,10 @@
 <body>
     <header>
         <button class="back-button" onclick="goBack()">←</button>
-        <h1>Sveta's Verse 🐾</h1>
+        <h1>
+            <img src="logoSV.png" alt="Logo" class="logo"> <!-- Adiciona a logo ao lado do título -->
+            Sveta's Verse 🐾
+        </h1>
         <nav>
             <a href="#home" onclick="showPage('home')">Home</a>
             <a href="#contact" onclick="showPage('contact')">Contact</a>
