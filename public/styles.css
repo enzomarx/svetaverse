@@ -1,0 +1,105 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f8c6c1;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+main {
+    padding: 20px;
+}
+
+.search-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.search-container input {
+    padding: 10px;
+    width: 80%;
+    max-width: 600px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.categories {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.categories button {
+    background-color: #f8c6c1;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.categories button:hover {
+    background-color: #f76c6c;
+}
+
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.post-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.post-card:hover {
+    transform: scale(1.05);
+}
+
+.post-card h2 {
+    color: #f76c6c;
+    margin: 0;
+}
+
+.post-card p {
+    margin: 10px 0;
+}
+
+.post-content {
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    background-color: #f8c6c1;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
